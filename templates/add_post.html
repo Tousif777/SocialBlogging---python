@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+Create A New Blog
+{% endblock %}
+
+{% block content %}
+      
+{% if user.is_authenticated %}
+
+<h1>Add your Post</h1>
+<hr>
+</br>
+
+
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-dark">Post</button>
+    </div>
+
+    <script>
+        var name = "{{ user.id }}" ;
+        document.getElementById("bal").value = name;
+    </script>
+
+    
+
+{% endif %}
+
+{% endblock  %}

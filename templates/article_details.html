@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+ {% block title %}  {{ post.title }}   {% endblock %} 
+ {% block content %}
+
+<h1>{{ post.title }}</h1>
+<small> By:{{ post.author }} --{{ post.post_date }} --
+    
+</br>
+</br>
+</hr>
+<img src="{{ post.header_image.url }}" alt="">
+</br></br>
+<p>{{ post.body|safe  }}</p>
+
+</br>
+{% if user.is_authenticated %}
+
+<form action="{% url 'like_post' post.pk %}" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-primary  btn-sm", type="submit", name="post_id", value="{{ post.id }}">
+        Like
+    </button> 
+{% endif %}
+-- {{ total_likes }} likes
+</form>
+    
+    {% if user.id == post.author.id %}
+
+    <a href="{% url 'update_post' post.pk %}">Edit</a>
+ --   <a href="{% url 'delete_post' post.pk %}">Delete</a>
+      {% endif %}
+
+      
+</small>
+
+
+<hr />
+
+
+
+
+<a href="{% url 'home' %}" class="btn btn-secondary mt-5"> Back </a>
+
+
+
+
+{% endblock %}
