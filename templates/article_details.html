@@ -8,8 +8,17 @@
 </br>
 </br>
 </hr>
-<img src="{{ post.header_image.url }}" alt="">
+
+{% if post.header_image %}
+    <img src="{{ post.header_image.url }}"  width="500" height="600">
+{% endif %}	
+
+
+
+
 </br></br>
+
+
 <p>{{ post.body|safe  }}</p>
 
 </br>
@@ -32,11 +41,7 @@
 
       
 </small>
-
-
 <hr />
-
-
 
 
 <a href="{% url 'home' %}" class="btn btn-secondary mt-5"> Back </a>
