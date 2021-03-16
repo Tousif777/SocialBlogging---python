@@ -1,0 +1,1 @@
+web: gunicon crm1.wsgi --log-file -
